@@ -4,3 +4,4 @@
 unittest/htmlcov/*
 *.coverage
 parsetab.py
+scripts/

@@ -161,7 +161,7 @@ class cbscript(object):
 		
 	def add_max_chain_length(self):
 		f = self.global_context.get_reset_function()
-		f.insert_command('/gamerule maxCommandChainLength 1000000000', 0)
+		f.insert_command('/gamerule max_command_sequence_length 1000000000', 0)
 		
 	def initialize_stack(self):
 		f = self.global_context.get_reset_function()

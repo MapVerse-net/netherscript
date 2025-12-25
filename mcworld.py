@@ -111,7 +111,7 @@ class mcworld(object):
 	def write_mcmeta(self, desc):
 		mcmeta_file = 'pack.mcmeta'
 
-		self.zip.writestr(mcmeta_file, json.dumps({'pack':{'min_format':88.0, 'max_format':88.0, 'description':desc}}, indent=4))
+		self.zip.writestr(mcmeta_file, json.dumps({'pack':{'min_format':94.0, 'max_format':94.0, 'description':desc}}, indent=4))
 
 	def write_zip(self):
 		self.zip.close()

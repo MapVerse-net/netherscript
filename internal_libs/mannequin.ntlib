@@ -1,0 +1,28 @@
+import common
+import math
+
+define @Mannequin: @Entity[type=mannequin]
+
+    function walk_towards(_x, _z, _speed)
+
+        _dx = (_x - @s.x) / 1000
+        _dz = (_z - @s.z) / 1000
+        _distance = sqrt(_dx^2 + _dz^2)
+
+        _vx = _dx * 1000 / _distance
+        _vz = _dz * 1000 / _distance
+
+        @s.vx = _vx * _speed
+        @s.vz = _vz * _speed
+    end
+
+    function face_closest()
+        at @s
+            /rotate @s facing entity @Entity[type=player,sort=nearest,limit=1]
+        end
+    end
+
+    function jump()
+        @s.vy = 4500
+    end
+end

@@ -19,7 +19,7 @@ define @Entity: @e
 	invulnerable: Invulnerable byte 1
 	silent: Silent byte 1
 	glowing: Glowing byte 1
-	noai: NoAI byte 1
+	no_ai: NoAI byte 1
 	air: Air short 1
     tele_duration: teleport_duration int 1
 end

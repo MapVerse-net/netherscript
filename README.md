@@ -56,3 +56,5 @@ NetherScript includes many high level features that simplify the syntax and cons
 * Wrappers for the most used Minecraft commands
 * MiniMessage support
 * A mannequin API
+* In-line comments
+* Proper compiler errors

@@ -31,4 +31,4 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller your_entry_file.py
+          pyinstaller compile.py

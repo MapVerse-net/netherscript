@@ -31,4 +31,11 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller compile.py
+          pyinstaller --onefile compile.py
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyinstaller-build-${{ matrix.os }}
+          path: |
+            dist/**

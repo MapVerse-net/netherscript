@@ -1,0 +1,13 @@
+import type { AnyValueObject, SidebarListItem, SortByObjectKeyOptions, VitePressSidebarOptions } from './types.ts';
+export declare function generateNotTogetherMessage(options: string[]): string;
+export declare function getValueFromFrontmatter<T>(filePath: string, key: string, defaultValue: T): T;
+export declare function getOrderFromFrontmatter(filePath: string, defaultOrder: number): number;
+export declare function getDateFromFrontmatter(filePath: string): string;
+export declare function getExcludeFromFrontmatter(filePath: string, excludeFrontmatterFieldName?: string): boolean;
+export declare function formatTitle(options: VitePressSidebarOptions, title: string, fromTitleHeading?: boolean): string;
+export declare function getTitleFromMd(fileName: string, filePath: string, options: VitePressSidebarOptions, isDirectory: boolean, callbackTitleReceived?: () => void): string;
+export declare function sortByFileTypes(arrItems: SidebarListItem, sortFolderTo: 'top' | 'bottom'): object[];
+export declare function sortByObjectKey(options: SortByObjectKeyOptions): object[];
+export declare function deepDeleteKey(obj: SidebarListItem, key: string): void;
+export declare function removePrefixFromTitleAndLink(sidebarList: SidebarListItem, options: VitePressSidebarOptions): SidebarListItem;
+export declare function debugPrint(optionItems?: AnyValueObject, sidebarResult?: AnyValueObject): void;

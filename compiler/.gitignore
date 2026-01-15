@@ -1,0 +1,13 @@
+*.pyc
+*.pyo
+*.out
+unittest/htmlcov/*
+*.coverage
+parsetab.py
+scripts/
+tests/
+build/
+dist/
+compile.spec
+compile
+__pycache__

@@ -5,7 +5,7 @@ import { withSidebar } from 'vitepress-sidebar'
 const vitePressOptions = {
   title: "NetherScript",
   description: "MCFunction Compiler",
-  base: "/netherscript-docs",
+  base: "/netherscript",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

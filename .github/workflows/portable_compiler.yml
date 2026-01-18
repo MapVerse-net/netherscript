@@ -1,0 +1,23 @@
+name: Zip compiler src
+
+on:
+  workflow_dispatch:
+
+jobs:
+  zip-src:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Zip compiler/src contents
+        run: |
+          cd compiler/src
+          zip -r ../../compiler-src.zip .
+
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiler-src
+          path: compiler-src.zip

@@ -20,29 +20,52 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
           cache: "pip"
 
-      - name: Install dependencies
+      # --------------------
+      # Ubuntu
+      # --------------------
+      - name: Install dependencies (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
           pip install -r cli/requirements.txt
 
-      - name: Verify dependencies
-        run: |
-          python - <<EOF
-          import click, requests
-          print("Dependencies OK")
-          EOF
-
-      - name: Build single-file executable
+      - name: Build executable (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
         run: |
           pyinstaller \
             --onefile \
             --name netherscript \
             cli/netherscript.py
 
+      # --------------------
+      # Windows
+      # --------------------
+      - name: Install dependencies (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install -r cli/requirements.txt
+
+      - name: Build executable (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          pyinstaller `
+            --onefile `
+            --name netherscript `
+            cli/netherscript.py
+
+      # --------------------
+      # Artifacts
+      # --------------------
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:

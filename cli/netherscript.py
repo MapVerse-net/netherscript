@@ -104,7 +104,7 @@ def uninstall(version):
 
 if __name__ == '__main__':
     
-    install_path = pathlib.Path(__file__).parent.resolve()
+    install_path = pathlib.Path(os.curdir).parent.resolve()
     compiler_path: pathlib.Path = pathlib.Path.joinpath(install_path, pathlib.Path(f"compilers"))
 
     try:

@@ -61,6 +61,8 @@ def install(version):
 
                 dload.save_unzip(i["download_url"], str(compiler_path))
 
+                click.echo(f"Sucessfully installed to {str(compiler_path)}")
+
 
 @manage.command(help="list compilers")
 @click.option("--filter", "filter", default="installed", help="list installed or available compilers")
@@ -107,7 +109,9 @@ if __name__ == '__main__':
 
     try:
         os.makedirs(compiler_path)
-    except:
+    except FileExistsError:
         pass
+    except:
+        click.echo("Failed to create directory compilers")
 
     manage()

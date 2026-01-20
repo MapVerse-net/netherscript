@@ -9,6 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
 
@@ -20,25 +21,27 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        shell: bash
+          pip install -r requirements.txt
+
+      - name: Verify dependencies
+        run: |
+          python - <<EOF
+          import click, requests
+          print("Dependencies OK")
+          EOF
 
       - name: Build single-file executable
         run: |
           pyinstaller \
             --onefile \
             --name netherscript \
-            --hidden-import=click \
-            --hidden-import=dload \
-            --hidden-import=requests \
             cli/netherscript.py
-        shell: bash
-
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
